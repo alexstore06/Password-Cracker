@@ -2,7 +2,7 @@ import java.awt.event.*;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
-public class BillionMonkeys3 implements ActionListener {
+public class PassCrack implements ActionListener {
 	// Class level variable declaration
 	
 	// Base JFrame (GUI)
@@ -20,9 +20,9 @@ public class BillionMonkeys3 implements ActionListener {
 	public static void main(String[] args) {
 		
 		// Start the program
-		new BillionMonkeys3();
+		new PassCrack();
 	} 
-	public BillionMonkeys3() {
+	public PassCrack() {
 		
 		// Initialize JFrame that was declared at the class level
 	    myFrame = new JFrame(); 
