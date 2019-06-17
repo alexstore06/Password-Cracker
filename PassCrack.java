@@ -126,9 +126,6 @@ public class PassCrack implements ActionListener {
         // Run this loop while you have not found the word
 		while(found == false)
 		{
-			// Loop until you've built a word of the same length of the target
-			for(int i = 0; i<=word.length(); i++)
-			{
 				// Set that random variable!
 				rand = r.nextInt(alphabet.length);
 				
@@ -176,7 +173,6 @@ public class PassCrack implements ActionListener {
 						foundword = "";
 					}
 				}
-			}
 		}
 		}
 	}
