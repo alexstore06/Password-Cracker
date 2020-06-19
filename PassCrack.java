@@ -2,6 +2,11 @@ import java.awt.event.*;
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
+
+/*
+ * Password Cracker - Copyright 2020 Alex Weir. All Rights Reserved.
+ * To-do: Add empty charset exception error, add percentage of keyspace tried
+ */
 public class PassCrack implements ActionListener {
 	// Class level variable declaration
 	
@@ -16,6 +21,12 @@ public class PassCrack implements ActionListener {
 	
 	// Text field for iteration count and other output
 	JTextField output;
+	
+	// Check boxes for charset selection
+	JCheckBox Lowercase;
+	JCheckBox Uppercase;
+	JCheckBox Numeric;
+	JCheckBox Special;
 	
 	public static void main(String[] args) {
 		
@@ -40,10 +51,28 @@ public class PassCrack implements ActionListener {
 	    JPanel mainPanel = (JPanel)myFrame.getContentPane();
 	    
 	    // Declare and initialize instruction label
-	    JLabel wordLabel = new JLabel("Enter the word you want to find:");
+	    JLabel setLabel = new JLabel("Character set options:");
 	    
 	    // Add instruction label to main JPanel
-	    mainPanel.add(wordLabel);
+	    mainPanel.add(setLabel);
+	    
+	    // Initialize check boxes that were declared at the class level
+	    Lowercase = new JCheckBox("Lowercase");
+	    Uppercase = new JCheckBox("Uppercase");
+	    Numeric = new JCheckBox("Numeric");
+	    Special = new JCheckBox("Special");
+	    
+	    // Add check boxes to main JPanel
+	    mainPanel.add(Lowercase);
+	    mainPanel.add(Uppercase);
+	    mainPanel.add(Numeric);
+	    mainPanel.add(Special);
+	    
+	    // Declare and initialize instruction label
+	    JLabel findLabel = new JLabel("Input word:");
+	    
+	    // Add instruction label to main JPanel
+	    mainPanel.add(findLabel);
 	    
 	    // Initialize input text field that was declared at the class level
 	    target = new JTextField(20);
@@ -67,13 +96,13 @@ public class PassCrack implements ActionListener {
 	    mainPanel.add(outputLabel);
 	    
 	    // Initialize output text field that was declared at the class level
-	    output = new JTextField(70);
+	    output = new JTextField(75);
 	    
 	    // Add output text field to main JPanel
 	    mainPanel.add(output);
 	    
-	    // Set the size to fit all JComponents
-	    myFrame.pack();
+	    // Set the size
+	    myFrame.setSize(850, 100);
 	    
 	    // Self-explanatory
 	    myFrame.setVisible(true);
@@ -86,9 +115,44 @@ public class PassCrack implements ActionListener {
 		
 		// Checks that the thing that was pressed was the button, which is useless as it's the only thing you can press
 		if(control == go) {
+		
+		// Declare and initialize an array list of strings that the program randomly chooses from
+		ArrayList<String> charset = new ArrayList<String>();
+		
+		// Declare and initialize an array of strings that will be pulled from to fill charset
+		String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","~","`","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","]","{","}","\\","|",";",":","'","\"",",","<",".",">","/","?"," "};
+		
+		// Check if the lowercase checkbox is selected
+		if(Lowercase.isSelected()) {
+		
+		// Add characters to list
+		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 0, 26)));
+		
+		}
+		
+		// Check if the uppercase checkbox is selected
+		if(Uppercase.isSelected()) {
 			
-		// Declare and initialize an array of strings, that are really characters, that the program randomly chooses from
-		String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","~","`","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","]","{","}","\\","|",";",":","'","\"",",","<",".",">","/","?"};
+		// Add characters to list
+		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 26, 52)));
+		
+		}
+		
+		// Check if the numeric checkbox is selected
+		if(Numeric.isSelected()) {
+			
+		// Add characters to list
+		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 52, 62)));
+		
+		}
+		
+		// Check if the special checkbox is selected
+		if(Special.isSelected()) {
+			
+		// Add characters to list
+		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 62, alphabet.length)));
+		
+		}
 		
 		// Declare and initialize a variable that holds the value that the user wants to find, by getting the text in the input text field
 		String word = target.getText();
@@ -123,14 +187,17 @@ public class PassCrack implements ActionListener {
 		// Iterations per second. Yes. That is a long. This thing is fast.
         long per;
         
+        // Keyspace percentage used
+        double keyspace;
+        
         // Run this loop while you have not found the word
 		while(found == false)
 		{
 				// Set that random variable!
-				rand = r.nextInt(alphabet.length);
+				rand = r.nextInt(charset.size());
 				
 				// Add a random character to the foundword variable
-				foundword += alphabet[rand];
+				foundword += charset.get(rand);
 				
 				// If the found word is the same length
 				if(word.length() == foundword.length()) 
@@ -153,8 +220,10 @@ public class PassCrack implements ActionListener {
 						// Calculate iterations per second
 						per = (long) (j/tTotal);
 						
+						keyspace = (j/Math.pow(charset.size(), word.length()))*100;
+						
 						// Set text on the output text field
-						output.setText("Found word after " + j + " iterations. It took " + tTotal + " seconds. (" + per + " iterations per second)");
+						output.setText("Found word after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
 						
 						// The word has been found
 						found = true;
