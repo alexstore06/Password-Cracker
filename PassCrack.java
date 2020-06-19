@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /*
  * Password Cracker - Copyright 2020 Alex Weir. All Rights Reserved.
- * To-do: Add empty charset exception error, add percentage of keyspace tried
+ * To-do: Add empty charset exception error
  */
 public class PassCrack implements ActionListener {
 	// Class level variable declaration
