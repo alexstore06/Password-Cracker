@@ -6,6 +6,7 @@ import javax.swing.*;
 /*
  * Password Cracker - Copyright 2020 Alex Weir. All Rights Reserved.
  */
+
 public class PassCrack implements ActionListener {
 	// Class level variable declaration
 	
