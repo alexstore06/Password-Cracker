@@ -5,7 +5,6 @@ import javax.swing.*;
 
 /*
  * Password Cracker - Copyright 2020 Alex Weir. All Rights Reserved.
- * To-do: Add empty charset exception error
  */
 public class PassCrack implements ActionListener {
 	// Class level variable declaration
@@ -69,7 +68,7 @@ public class PassCrack implements ActionListener {
 	    mainPanel.add(Special);
 	    
 	    // Declare and initialize instruction label
-	    JLabel findLabel = new JLabel("Input word:");
+	    JLabel findLabel = new JLabel("Input:");
 	    
 	    // Add instruction label to main JPanel
 	    mainPanel.add(findLabel);
@@ -102,7 +101,7 @@ public class PassCrack implements ActionListener {
 	    mainPanel.add(output);
 	    
 	    // Set the size
-	    myFrame.setSize(850, 100);
+	    myFrame.setSize(825, 100);
 	    
 	    // Self-explanatory
 	    myFrame.setVisible(true);
@@ -190,8 +189,8 @@ public class PassCrack implements ActionListener {
         // Keyspace percentage used
         double keyspace;
         
-        // Run this loop while you have not found the word
-		while(found == false)
+        // Run this loop forever
+		while(true)
 		{
 				// Set that random variable!
 				rand = r.nextInt(charset.size());
