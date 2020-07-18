@@ -31,6 +31,7 @@ public class PassCrack implements ActionListener {
 		
 		// Start the program
 		new PassCrack();
+		
 	} 
 	public PassCrack() {
 		
@@ -112,7 +113,7 @@ public class PassCrack implements ActionListener {
 		// Finds what was pressed
 		Object control = e.getSource();
 		
-		// Checks that the thing that was pressed was the button, which is useless as it's the only thing you can press
+		// Checks that the thing that was pressed was the button
 		if(control == go) {
 		
 		// Declare and initialize an array list of strings that the program randomly chooses from
@@ -124,33 +125,55 @@ public class PassCrack implements ActionListener {
 		// Check if the lowercase checkbox is selected
 		if(Lowercase.isSelected()) {
 		
-		// Add characters to list
-		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 0, 26)));
+			// Add characters to list
+			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 0, 26)));
 		
 		}
 		
 		// Check if the uppercase checkbox is selected
 		if(Uppercase.isSelected()) {
 			
-		// Add characters to list
-		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 26, 52)));
+			// Add characters to list
+			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 26, 52)));
 		
 		}
 		
 		// Check if the numeric checkbox is selected
 		if(Numeric.isSelected()) {
 			
-		// Add characters to list
-		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 52, 62)));
+			// Add characters to list
+			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 52, 62)));
 		
 		}
 		
 		// Check if the special checkbox is selected
 		if(Special.isSelected()) {
 			
-		// Add characters to list
-		charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 62, alphabet.length)));
+			// Add characters to list
+			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 62, alphabet.length)));
 		
+		}
+		
+		// If no character set check boxes are selected
+		if(charset.isEmpty()) {
+			
+			// Display error message
+			JOptionPane.showMessageDialog(null, "Please select your charset.");
+			
+			// Exit parent if statement
+			return;
+			
+		}
+		
+		// If input field is empty
+		if(target.getText().isEmpty()) {
+			
+			// Display error message
+			JOptionPane.showMessageDialog(null, "Please fill input field.");
+			
+			// Exit parent if statement
+			return;
+			
 		}
 		
 		// Declare and initialize a variable that holds the value that the user wants to find, by getting the text in the input text field
