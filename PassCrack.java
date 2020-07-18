@@ -188,9 +188,6 @@ public class PassCrack implements ActionListener {
 		// Declare random integer
 		int rand;
 		
-		// Whether the target word has been found
-		boolean found = false;
-		
 		// Iteration variable
 		long j = 0;
 		
@@ -246,9 +243,6 @@ public class PassCrack implements ActionListener {
 						
 						// Set text on the output text field
 						output.setText("Found word after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
-						
-						// The word has been found
-						found = true;
 						
 						// Exit loop
 						break;
