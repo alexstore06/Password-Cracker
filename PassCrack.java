@@ -107,6 +107,8 @@ public class PassCrack implements ActionListener {
 	    
 	    // Self-explanatory
 	    myFrame.setVisible(true);
+	    
+	    JOptionPane.showMessageDialog(null, "Welcome to my program!\nThis program takes an input string and a character set, and uses that character set to build guesses, which it then checks against the input string.\nPlease, start small! It can take many many guesses to guess the string, and the time it takes to crack the input increases exponentially with the length of the input,\neven though you can expect anywhere from 100K to 10M guesses per second.");
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -243,7 +245,7 @@ public class PassCrack implements ActionListener {
 						keyspace = (j/Math.pow(charset.size(), word.length()))*100;
 						
 						// Set text on the output text field
-						output.setText("Found word after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
+						output.setText("Found input after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
 						
 						// Exit loop
 						break;
