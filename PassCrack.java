@@ -109,6 +109,7 @@ public class PassCrack implements ActionListener {
 	    myFrame.setVisible(true);
 	    
 	    JOptionPane.showMessageDialog(null, "Welcome to my program!\nThis program takes an input string and a character set, and uses that character set to build guesses, which it then checks against the input string.\nPlease, start small! It can take many many guesses to guess the string, and the time it takes to crack the input increases exponentially with the length of the input,\neven though you can expect anywhere from 100K to 10M guesses per second.");
+	
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -213,54 +214,60 @@ public class PassCrack implements ActionListener {
         double keyspace;
         
         // Run this loop forever
-		while(true)
-		{
+		while(true) {
+			
+			// Create guess of same length by adding a random character for each character the input is long
+			for(int i = 0; i < word.length(); i++) {
+			
 				// Set that random variable!
 				rand = r.nextInt(charset.size());
 				
 				// Add a random character to the foundword variable
 				foundword += charset.get(rand);
+			
+			}
+
+			// If it's the same word
+			if(foundword.equals(word))
+			{
 				
-				// If the found word is the same length
-				if(word.length() == foundword.length()) 
-				{
-					// If it's the same word
-					if(foundword.equals(word))
-					{
-						// Get time info again
-						c = Calendar.getInstance();
-						
-						// Get time in milliseconds
-						tEnd = c.getTimeInMillis();
-						
-						// Calculate total time
-						tTotal = (tEnd - tStart)/1000;
-						
-						// Add 1 to the iteration variable
-						j++;
-						
-						// Calculate iterations per second
-						per = (long) (j/tTotal);
-						
-						keyspace = (j/Math.pow(charset.size(), word.length()))*100;
-						
-						// Set text on the output text field
-						output.setText("Found input after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
-						
-						// Exit loop
-						break;
-					}
-					
-					// If it's not the right word
-					else
-					{
-						// Add 1 to the iteration variable
-						j++;
-						
-						// Empty foundword string
-						foundword = "";
-					}
-				}
+				// Get time info again
+				c = Calendar.getInstance();
+				
+				// Get time in milliseconds
+				tEnd = c.getTimeInMillis();
+				
+				// Calculate total time
+				tTotal = (tEnd - tStart)/1000;
+				
+				// Add 1 to the iteration variable
+				j++;
+				
+				// Calculate iterations per second
+				per = (long) (j/tTotal);
+				
+				// Calculate keyspace of input
+				keyspace = (j/Math.pow(charset.size(), word.length()))*100;
+				
+				// Set text on the output text field
+				output.setText("Found input after " + j + " iterations, over " + tTotal + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace.");
+				
+				// Exit loop
+				break;
+				
+			}
+			
+			// If it's not the right word
+			else
+			{
+				
+				// Add 1 to the iteration variable
+				j++;
+				
+				// Empty foundword string
+				foundword = "";
+				
+			}
 		}
 		}
 	}
