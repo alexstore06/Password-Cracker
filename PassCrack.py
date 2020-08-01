@@ -66,10 +66,14 @@ while True:
         keyspace = (j/len(charset) ** len(word))*100;
         keyspace = str(keyspace)
         taken = (end - start) / 1000
-        per = j/taken
+        if taken != 0:
+            per = j/taken
+            per = str(per)
+        else:
+            print("Time taken was too small, time and iterations per second will list as 0")
+            per = "0"
         j = str(j)
         taken = str(taken)
-        per = str(per)
         print("Found input after " + j + " iterations, over " + taken + " seconds, (" + per + " iterations/sec) using " + keyspace + "% of the keyspace")
         break
     else:
