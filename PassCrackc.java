@@ -50,9 +50,10 @@ public class PassCrackc {
 			// Read input and put into variable
 			lowercase = reader.readLine();
 			
-			// If variable is valid, break, otherwise prompt to enter valid input
+			// If variable is valid, add characters to list if variable equals "y" and then break, or if "n" just break, otherwise prompt to enter valid input
 			if(lowercase.equals("y")) {
 				
+				charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 0, 26)));
 				break;
 				
 			}
@@ -80,8 +81,10 @@ public class PassCrackc {
 			// Read input and put into variable
 			uppercase = reader.readLine();
 			
-			// If variable is valid, break, otherwise prompt to enter valid input
+			// If variable is valid, add characters to list if variable equals "y" and then break, or if "n" just break, otherwise prompt to enter valid input
 			if(uppercase.equals("y")) {
+				
+				charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 26, 52)));
 				
 				break;
 				
@@ -110,9 +113,10 @@ public class PassCrackc {
 			// Read input and put into variable
 			numbers = reader.readLine();
 			
-			// If variable is valid, break, otherwise prompt to enter valid input
+			// If variable is valid, add characters to list if variable equals "y" and then break, or if "n" just break, otherwise prompt to enter valid input
 			if(numbers.equals("y")) {
 				
+				charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 52, 62)));
 				break;
 				
 			}
@@ -140,9 +144,10 @@ public class PassCrackc {
 			// Read input and put into variable
 			special = reader.readLine();
 			
-			// If variable is valid, break, otherwise prompt to enter valid input
+			// If variable is valid, add characters to list if variable equals "y" and then break, or if "n" just break, otherwise prompt to enter valid input
 			if(special.equals("y")) {
 				
+				charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 62, alphabet.length)));
 				break;
 				
 			}
@@ -159,38 +164,6 @@ public class PassCrackc {
 				
 			}
 			
-		}
-		
-		// If user wants lowercase characters
-		if(lowercase.equals("y")) {
-		
-			// Add characters to list
-			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 0, 26)));
-		
-		}
-		
-		// If user wants uppercase characters
-		if(uppercase.equals("y")) {
-			
-			// Add characters to list
-			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 26, 52)));
-		
-		}
-		
-		// If user wants numbers
-		if(numbers.equals("y")) {
-			
-			// Add characters to list
-			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 52, 62)));
-		
-		}
-		
-		// If user wants special characters
-		if(special.equals("y")) {
-			
-			// Add characters to list
-			charset.addAll(Arrays.asList(Arrays.copyOfRange(alphabet, 62, alphabet.length)));
-		
 		}
 		
 		// Run this loop until break is called
