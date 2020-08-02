@@ -49,6 +49,9 @@ while True:
         break
     else:
         print("Please enter valid input.")
+if len(charset) == 0:
+    print("Please don't leave charset empty.")
+    exit()
 while True:
     print("Input string:")
     word = input()
