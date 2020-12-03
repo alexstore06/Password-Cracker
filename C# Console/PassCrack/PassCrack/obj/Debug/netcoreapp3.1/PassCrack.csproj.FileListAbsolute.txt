@@ -1,0 +1,12 @@
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.exe
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.deps.json
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.runtimeconfig.json
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.runtimeconfig.dev.json
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.dll
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\bin\Debug\netcoreapp3.1\PassCrack.pdb
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.AssemblyInfoInputs.cache
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.AssemblyInfo.cs
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.csproj.CoreCompileInputs.cache
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.dll
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.pdb
+C:\Users\alexs\Documents\GitHub\Password-Cracker\C# Console\PassCrack\PassCrack\obj\Debug\netcoreapp3.1\PassCrack.genruntimeconfig.cache
